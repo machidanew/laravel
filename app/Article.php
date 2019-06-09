@@ -10,7 +10,10 @@ class Article extends Model
 
   public function comments(){//複数形なのは、articleに対いてcommentが複数つくから
     return $this->hasMany('App\Comment');
-
   }
-    //
+
+  public function tags(){
+    return $this->belongsToMany('App\Tag');
+   }
+
 }

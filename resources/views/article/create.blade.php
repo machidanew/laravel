@@ -25,6 +25,20 @@
         <p>{{ $errors->first('body') }}</p>
         @endif
       </div>
+
+      <div class="form-group">
+		      <label for="tag_id" class="">タグ一覧</label>
+		      <div class="">
+				     <input id="tag_id" type="checkbox" value="1" name="tag_ids[]">音楽
+				     <input id="tag_id" type="checkbox" value="2" name="tag_ids[]">旅
+             <input id="tag_id" type="checkbox" value="3" name="tag_ids[]">仕事
+		       </div>
+	     </div>
+
+       <div class="form-image_url form-group">
+         <input type="file" name="image_url">
+       </div>
+
       <button type="submit" class="btn btn-primary">新規追加</button>
     </form>
 

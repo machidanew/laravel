@@ -6,18 +6,20 @@ use Illuminate\Http\Request;
 use App\Article;
 use App\Http\Requests\PostRequest;
 use App\Models\Comment;
-
+use App\Models\Tag;
 class ArticleController extends Controller
 {
     public function index(){
+    //  $tags = Article::find(1)->tags()->orderBy('title')->get();
       $articles = Article::all();//Articlesテーブルからデータを取り出している
       return view('article.index',['articles' => $articles]);
       //viewに$articlesを渡している
     }
 
     public function view($id){
-      $articles = Article::findOrFail($id);
-      return view('article.view',['articles' => $articles]);
+      $article = Article::findOrFail($id);
+      return view('article.view',['article' => $article,
+      'image_url' => str_replace('public/','storage',$article->image_url),]);
     }
 
     public function create(){//createメソッドはview新規追加のフォームを表示しているだけ
@@ -27,14 +29,20 @@ class ArticleController extends Controller
     public function store(PostRequest $request){
       //storeメソッドはフォームから送られたデータを変数$requestで受け取る
 
-      $article = new Article;
+      $article = new Article($request->get('article',[]));
+      var_dump($time);
+      exit;
+      $article->image_url = $request->image_url->storeAs('public/article_images');
       $article->title = $request->title;
       $article->body = $request->body;
+  //    $article->tag_id = $request->tag_id;
+
       $article->save();
+      $article->tags()->sync($request->tag_ids);
 
       return view('article.store');
-    }
 
+}
     public function edit(Request $request, $id){
 
       $article = Article::find($id);

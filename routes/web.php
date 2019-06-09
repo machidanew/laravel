@@ -22,5 +22,15 @@ Route::post('edit', 'ArticleController@update');
 Route::get('delete/{id}', 'ArticleController@show');
 Route::post('delete', 'ArticleController@delete');
 Route::get('view/{id}','ArticleController@view');
-Route::post('store/{id}/comments','CommentsController@store');
+Route::post('store/{article}/comments','CommentsController@store');
+Route::delete('/articles/{article}/comments/{comment}','CommentsController@destroy');
+
 //
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+/*Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');*/
