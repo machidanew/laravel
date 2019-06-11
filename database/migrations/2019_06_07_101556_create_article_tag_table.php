@@ -22,13 +22,13 @@ class CreateArticleTagTable extends Migration
           $table->foreign('article_id')
           ->references('id')
           ->on('articles')
-          ->onDelete('cascade')
+      //    ->onDelete('cascade')
           ->onUpdate('cascade');
 
           $table->foreign('tag_id')
           ->references('id')
           ->on('tags')
-          ->onDelete('cascade')
+      //    ->onDelete('cascade')
           ->onUpdate('cascade');
         });
     }
