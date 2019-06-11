@@ -35,10 +35,6 @@
 		       </div>
 	     </div>
 
-       <div class="form-image_url form-group">
-         <input type="file" name="image_url">
-       </div>
-
       <button type="submit" class="btn btn-primary">新規追加</button>
     </form>
 

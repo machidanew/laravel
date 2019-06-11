@@ -29,9 +29,7 @@ class ArticleController extends Controller
     public function store(PostRequest $request){
       //storeメソッドはフォームから送られたデータを変数$requestで受け取る
 
-      $article = new Article($request->get('article',[]));
-    
-      $article->image_url = $request->image_url->storeAs('public/article_images');
+      $article = new Article($request->get('article',[]));  
       $article->title = $request->title;
       $article->body = $request->body;
   //    $article->tag_id = $request->tag_id;
