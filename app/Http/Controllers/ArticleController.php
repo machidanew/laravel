@@ -30,8 +30,7 @@ class ArticleController extends Controller
       //storeメソッドはフォームから送られたデータを変数$requestで受け取る
 
       $article = new Article($request->get('article',[]));
-      var_dump($time);
-      exit;
+    
       $article->image_url = $request->image_url->storeAs('public/article_images');
       $article->title = $request->title;
       $article->body = $request->body;
