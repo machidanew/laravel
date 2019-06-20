@@ -29,11 +29,8 @@ Route::get('/user/signin',['as' => 'user.signin',
 //ログインからのpost処理
 Route::post('/user/signin',['as' => 'user.signin',
             'uses' => 'UserController@postSignin']);
+Route::resource('users', 'UserController');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
-/*Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');*/
