@@ -1,5 +1,6 @@
 @extends('layouts.default')
 @section('content')
+@extends('layouts.app')
 
 <h1>ブログ一覧</h1>
 <p><a href="/create" class="btn btn-primary">新規追加</a></p>
