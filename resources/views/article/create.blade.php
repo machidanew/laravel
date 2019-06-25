@@ -26,6 +26,10 @@
         @endif
       </div>
 
+      <div class="form-image_url">
+        <input type="file" name="image_url">
+      </div>
+
       <div class="form-group">
 		      <label for="tag_id" class="">タグ一覧</label>
 		      <div class="">

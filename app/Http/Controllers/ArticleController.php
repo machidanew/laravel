@@ -16,13 +16,17 @@ class ArticleController extends Controller
       //viewに$articlesを渡している
     }
 
-    public function view($id){
+    public function view(Article $article,$id){
       $article = Article::findOrFail($id);
-      return view('article.view',['article' => $article,
-      'image_url' => str_replace('public/','storage',$article->image_url),]);
+      return view('articles/view',[
+        'title' => $article->title,
+        'body' => $article->body,
+      'image_url' => str_replace('public/','storage/',$article->image_url),
+    ]);
     }
 
-    public function create(){//createメソッドはview新規追加のフォームを表示しているだけ
+    public function create(Request $request){//createメソッドはview新規追加のフォームを表示しているだけ
+      $article->image_url = $request->image_url->storeAs('public/article_images', $time.'_'.Auth::user()->id . '.jpg');
       return view('article.create');
     }
 
