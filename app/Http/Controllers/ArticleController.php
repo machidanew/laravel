@@ -18,7 +18,7 @@ class ArticleController extends Controller
 
     public function view(Article $article,$id){
       $article = Article::findOrFail($id);
-      return view('articles/view',[
+      return view('article/view',[
         'title' => $article->title,
         'body' => $article->body,
       'image_url' => str_replace('public/','storage/',$article->image_url),
